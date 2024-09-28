@@ -1,191 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Trang chủ</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f4f7f8;
+            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
         }
-        .container {
-            max-width: 600px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
+        header {
+            background-color: #4CAF50;
+            padding: 10px;
             text-align: center;
-            color: #333;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: #555;
-        }
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            transition: border-color 0.3s;
-        }
-        input:focus,
-        select:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-        .error {
-            color: red;
-            font-size: 12px;
-            margin-top: 5px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .btn-primary {
-            background-color: #007bff;
             color: white;
         }
-        .btn-primary:disabled {
-            background-color: #007bff80; /* Slightly transparent */
-            cursor: not-allowed;
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
         }
-        .btn-secondary {
-            background-color: #ccc;
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
             color: black;
         }
-        .btn-primary:hover:not(:disabled),
-        .btn-secondary:hover {
-            opacity: 0.9;
-        }
-        #profile-preview {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-        @media (max-width: 600px) {
-            .container {
-                padding: 15px;
-            }
+        section {
+            padding: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>Create Account</h2>
-    <form id="user-form">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Enter your username." required>
-            <div id="username-error" class="error hidden">Username is already taken</div>
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password." required>
-            <button type="button" id="toggle-password">Show</button>
-            <div id="password-error" class="error hidden">Password must be at least 8 characters long</div>
-        </div>
-        <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="Enter your email." required>
-            <div id="email-error" class="error hidden">Invalid email format</div>
-        </div>
-        <div class="form-group">
-            <label for="full-name">Full Name (optional)</label>
-            <input type="text" id="full-name" placeholder="Enter your full name.">
-        </div>
-        <div class="form-group">
-            <label for="role">Role</label>
-            <select id="role" required>
-                <option value="">Select a role</option>
-                <option value="admin">Admin</option>
-                <option value="user">User</option>
-            </select>
-            <div id="role-error" class="error hidden">Role is required</div>
-        </div>
-        <div class="form-group">
-            <label for="profile-picture">Profile Picture (Upload or URL)</label>
-            <input type="file" id="profile-picture" accept="image/*">
-            <input type="text" id="profile-url" placeholder="Or enter image URL">
-            <img id="profile-preview" class="hidden" alt="Profile Preview">
-        </div>
-        <div class="form-group">
-            <p>Account Created At: <span id="created-at"></span></p>
-            <p>Last Updated At: <span id="updated-at"></span></p>
-        </div>
-        <button type="submit" class="btn btn-primary" id="submit-button" disabled>Create Account</button>
-        <button type="button" class="btn btn-secondary" id="cancel-button">Cancel</button>
-    </form>
-</div>
+    <header>
+        <h1>Trang chủ</h1>
+    </header>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const createdAt = new Date().toLocaleString();
-        document.getElementById('created-at').innerText = createdAt;
-        document.getElementById('updated-at').innerText = createdAt;
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="lap1.html">Lap1</a> <!-- Thay đổi liên kết -->
+        <a href="about.html">About</a>
+        
+    </nav>
 
-        document.getElementById('toggle-password').addEventListener('click', function () {
-            const passwordField = document.getElementById('password');
-            const isHidden = passwordField.type === 'password';
-            passwordField.type = isHidden ? 'text' : 'password';
-            this.innerText = isHidden ? 'Hide' : 'Show';
-        });
+    <section id="home">
+        <h2>Chào mừng đến với trang Home</h2>
+        <p>Đây là trang chủ.</p>
+    </section>
 
-        document.getElementById('profile-picture').addEventListener('change', function (event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const preview = document.getElementById('profile-preview');
-                    preview.src = e.target.result;
-                    preview.classList.remove('hidden');
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        document.getElementById('profile-url').addEventListener('input', function () {
-            const preview = document.getElementById('profile-preview');
-            preview.src = this.value;
-            preview.classList.remove('hidden');
-        });
-
-        const inputs = document.querySelectorAll('input[required], select[required]');
-        inputs.forEach(input => {
-            input.addEventListener('input', function () {
-                const allValid = [...inputs].every(input => input.value.trim() !== '');
-                document.getElementById('submit-button').disabled = !allValid;
-            });
-        });
-
-        document.getElementById('cancel-button').addEventListener('click', function () {
-            window.history.back();
-        });
-    });
-</script>
+    <section id="about">
+        <h2>About</h2>
+        <p>Thông tin về chúng tôi.</p>
+    </section>
 
 </body>
 </html>
