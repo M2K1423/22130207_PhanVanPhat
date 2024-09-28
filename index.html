@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+        .hidden {
+            display: none;
+        }
+        #profile-preview {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: #ccc;
+            color: black;
+        }
+        @media (max-width: 600px) {
+            body {
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h2>Create Account</h2>
+<form id="user-form">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username." required>
+        <div id="username-error" class="error hidden"></div>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password." required>
+        <button type="button" id="toggle-password">Show</button>
+        <div id="password-error" class="error hidden"></div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="Enter your email." required>
+        <div id="email-error" class="error hidde
