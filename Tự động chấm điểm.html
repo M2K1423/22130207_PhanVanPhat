@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://127.0.0.1:5500/index.html?username=&password=# -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title _msttexthash="5568251" _msthash="0">Tự động chấm điểm</title>
+    <style>
+        /* Header styles */
+        .header {
+          background-color: #333;
+          color: #fff;
+          padding: 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid #ccc;
+        }
+
+        .logo {
+          font-size: 24px;
+          font-weight: bold;
+          margin-right: 20px;
+        }
+
+        .login {
+          margin-left: auto;
+        }
+
+        .login a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+        .login a:hover {
+          color: #ccc;
+        }
+        /* Grade styles */
+        .grade-container {
+          max-width: 800px;
+          margin: 40px auto;
+          padding: 20px;
+          background-color: #f9f9f9;
+          border: 1px solid #ddd;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+        }
+
+        .grade-summary {
+          margin-bottom: 20px;
+        }
+
+        .grade-summary ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .grade-summary li {
+          margin-bottom: 10px;
+        }
+
+        .grade-summary span {
+          font-weight: bold;
+        }
+
+        .test-cases {
+          margin-bottom: 20px;
+        }
+
+        .test-cases ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .test-cases li {
+          margin-bottom: 10px;
+        }
+
+        .test-cases span {
+          font-weight: bold;
+        }
+
+        .test-cases code {
+          font-family: monospace;
+          background-color: #f9f9f9;
+          padding: 2px;
+          border: 1px solid #ccc;
+        }
+
+        .passed {
+          color: #2ecc71;
+        }
+
+        .failed {
+          color: #e74c3c;
+        }
+
+        .sidebar {
+          position: fixed;
+          top: 80px;
+          left: 0;
+          width: 200px;
+          height: calc(100vh - 80px);
+          background-color: #333;
+          color: #fff;
+          padding: 20px;
+          border-right: 1px solid #ccc;
+        }
+
+        .sidebar ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .sidebar li {
+          margin-bottom: 10px;
+        }
+
+        .sidebar a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+        .sidebar a:hover {
+          color: #ccc;
+        }
+
+        .active {
+          background-color: #444;
+          padding: 10px;
+          border-radius: 5px;
+        }
+
+        .tap {
+          background-color: #4CAF50;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .tap:hover {
+          background-color: #3e8e41;
+        }
+
+        
+        .login {
+  position: relative;
+}
+
+.login-form {
+  display: none;
+  position: absolute;
+  width: 500px;
+  height: 700px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.login-form.show {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+          <img src="./Tự động chấm điểm_files/logo.png" alt="Logo" _mstalt="44941" _msthash="1">
+        </div>
+        <div class="login">
+          <a href="http://127.0.0.1:5500/index.html?username=&amp;password=#" id="login-btn" _msttexthash="1457443" _msthash="2">Đăng nhập</a>
+          <div class="login-form" id="login-form" _mstvisible="0">
+            <form _mstvisible="1">
+              <div class="form-group" _mstvisible="2">
+                <label for="username" _msttexthash="1850420" _msthash="3" _mstvisible="3">Tên đăng nhập</label>
+                <input type="text" id="username" name="username" _mstvisible="3">
+              </div>
+              <div class="form-group" _mstvisible="2">
+                <label for="password" _msttexthash="2110290" _msthash="4" _mstvisible="3">Mật khẩu</label>
+                <input type="password" id="password" name="password" _mstvisible="3">
+              </div>
+              <input type="submit" value="Đăng nhập" _mstvalue="1457443" _msthash="5" _mstvisible="2">
+            </form>
+          </div>
+        </div>
+      </div>
+    <div class="sidebar">
+        <ul>
+            <li><a href="http://127.0.0.1:5500/index.html?username=&amp;password=#" class="active" _msttexthash="4190810" _msthash="6">Bảng điều khiển</a></li>
+            <li><a href="http://127.0.0.1:5500/index.html?username=&amp;password=#" _msttexthash="1197118" _msthash="7">Bài tập</a></li>
+            <li><a href="http://127.0.0.1:5500/index.html?username=&amp;password=#" _msttexthash="841516" _msthash="8">Lớp</a></li>
+        </ul>
+    </div>
+    <div class="grade-container">
+        <h2 _msttexthash="5568251" _msthash="9">Tự động chấm điểm</h2>
+        <div class="grade-summary">
+            <h3 _msttexthash="2679820" _msthash="10">Tóm tắt lớp</h3>
+            <ul>
+                <li>
+                    <font _mstmutation="1" _msttexthash="1013220" _msthash="11"><span _mstmutation="1" _istranslated="1">Điểm:</span> <span id="score" _mstmutation="1" _istranslated="1">0/10</span></font>
+                </li>
+                <li>
+                    <font _mstmutation="1" _msttexthash="5239195" _msthash="12"><span _mstmutation="1" _istranslated="1">Thời gian thực hiện:</span> <span id="time-taken" _mstmutation="1" _istranslated="1">00:00:00</span></font>
+                </li>
+                <li>
+                    <font _mstmutation="1" _msttexthash="5518747" _msthash="13"><span _mstmutation="1" _istranslated="1">Bộ nhớ đã sử dụng:</span> <span id="memory-used" _mstmutation="1" _istranslated="1">0 MB</span></font>
+                </li>
+            </ul>
+        </div>
+        <div class="test-cases">
+            <h3 _msttexthash="6845410" _msthash="14">Trường hợp kiểm thử</h3>
+            <ul id="test-cases-list">
+                <li>
+                    <font _mstmutation="1" _msttexthash="11568635" _msthash="15"><span _mstmutation="1" _istranslated="1">Đầu vào:</span> <span _mstmutation="1" _istranslated="1">Đầu ra dự kiến:</span> <span _mstmutation="1" _istranslated="1">Tình trạng:</span> <span class="passed" _mstmutation="1" _istranslated="1">Đã thông qua</span></font><code>input 1</code><code>output 1</code>
+                </li>
+                <li>
+                    <font _mstmutation="1" _msttexthash="11818651" _msthash="16"><span _mstmutation="1" _istranslated="1">Đầu vào:</span> <span _mstmutation="1" _istranslated="1">Đầu ra dự kiến:</span> <span _mstmutation="1" _istranslated="1">Tình trạng:</span> <span class="failed" _mstmutation="1" _istranslated="1">Không thành công</span></font><code>input 2</code><code>output 2</code>
+                </li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <font _mstmutation="1" _msttexthash="12440584" _msthash="17"><tap id="try-again" _mstmutation="1" _istranslated="1">Thử lại</tap> <tap id="return-to-dashboard" _mstmutation="1" _istranslated="1">Quay lại Bảng điều khiển</tap></font>
+        </div>
+    </div>
+
+    <script>
+      document.getElementById('login-btn').addEventListener('click', function() {
+        document.getElementById('login-form').classList.toggle('show');
+      });
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
