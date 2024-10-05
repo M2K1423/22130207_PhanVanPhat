@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatic Grading</title>
+    <style>
+        /* Header styles */
+        .header {
+          background-color: #333;
+          color: #fff;
+          padding: 20px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid #ccc;
+        }
+
+        .logo {
+          font-size: 24px;
+          font-weight: bold;
+          margin-right: 20px;
+        }
+
+        .login {
+          margin-left: auto;
+        }
+
+        .login a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+        .login a:hover {
+          color: #ccc;
+        }
+        /* Grade styles */
+        .grade-container {
+          max-width: 800px;
+          margin: 40px auto;
+          padding: 20px;
+          background-color: #f9f9f9;
+          border: 1px solid #ddd;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+        }
+
+        .grade-summary {
+          margin-bottom: 20px;
+        }
+
+        .grade-summary ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .grade-summary li {
+          margin-bottom: 10px;
+        }
+
+        .grade-summary span {
+          font-weight: bold;
+        }
+
+        .test-cases {
+          margin-bottom: 20px;
+        }
+
+        .test-cases ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .test-cases li {
+          margin-bottom: 10px;
+        }
+
+        .test-cases span {
+          font-weight: bold;
+        }
+
+        .test-cases code {
+          font-family: monospace;
+          background-color: #f9f9f9;
+          padding: 2px;
+          border: 1px solid #ccc;
+        }
+
+        .passed {
+          color: #2ecc71;
+        }
+
+        .failed {
+          color: #e74c3c;
+        }
+
+        .sidebar {
+          position: fixed;
+          top: 80px;
+          left: 0;
+          width: 200px;
+          height: calc(100vh - 80px);
+          background-color: #333;
+          color: #fff;
+          padding: 20px;
+          border-right: 1px solid #ccc;
+        }
+
+        .sidebar ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .sidebar li {
+          margin-bottom: 10px;
+        }
+
+        .sidebar a {
+          color: #fff;
+          text-decoration: none;
+        }
+
+        .sidebar a:hover {
+          color: #ccc;
+        }
+
+        .active {
+          background-color: #444;
+          padding: 10px;
+          border-radius: 5px;
+        }
+
+        .tap {
+          background-color: #4CAF50;
+          color: #fff;
+          padding: 10px;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .tap:hover {
+          background-color: #3e8e41;
+        }
+
+        /* .login-form {
+          display: none;
+          position: absolute;
+          top: 80px;
+          right: 20px;
+          background-color: #f9f9f9;
+          padding: 20px;
+          border: 1px solid #ddd;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+        }
+
+        .login-form.show {
+          display: block;
+        } */
+        .login-form {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.login-form.show {
+  display: block;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+          <img src="logo.png" alt="Logo">
+        </div>
+        <div class="login">
+          <a href="#" id="login-btn">Đăng nhập</a>
+          <div class="login-form" id="login-form">
+            <form>
+              <div class="form-group">
+                <label for="username">Tên đăng nhập</label>
+                <input type="text" id="username" name="username">
+              </div>
+              <div class="form-group">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password">
+              </div>
+              <input type="submit" value="Đăng nhập">
+            </form>
+          </div>
+        </div>
+      </div>
+    <div class="sidebar">
+        <ul>
+            <li><a href="#" class="active">Bảng điều khiển</a></li>
+            <li><a href="#">Bài tập</a></li>
+            <li><a href="#">Lớp</a></li>
+        </ul>
+    </div>
+    <div class="grade-container">
+        <h2>Automatic Grading</h2>
+        <div class="grade-summary">
+            <h3>Grade Summary</h3>
+            <ul>
+                <li>
+                    <span>Score:</span>
+                    <span id="score">0/10</span>
+                </li>
+                <li>
+                    <span>Time taken:</span>
+                    <span id="time-taken">00:00:00</span>
+                </li>
+                <li>
+                    <span>Memory used:</span>
+                    <span id="memory-used">0 MB</span>
+                </li>
+            </ul>
+        </div>
+        <div class="test-cases">
+            <h3>Test Cases</h3>
+            <ul id="test-cases-list">
+                <li>
+                    <span>Input:</span>
+                    <code>input 1</code>
+                    <span>Expected output:</span>
+                    <code>output 1</code>
+                    <span>Status:</span>
+                    <span class="passed">Passed</span>
+                </li>
+                <li>
+                    <span>Input:</span>
+                    <code>input 2</code>
+                    <span>Expected output:</span>
+                    <code>output 2</code>
+                    <span>Status:</span>
+                    <span class="failed">Failed</span>
+                </li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <tap id="try-again">Try Again</tap>
+            <tap id="return-to-dashboard">Return to Dashboard</tap>
+        </div>
+    </div>
+
+    <script>
+      document.getElementById('login-btn').addEventListener('click', function() {
+        document.getElementById('login-form').classList.toggle('show');
+      });
+    </script>
+</body>
+</html>
