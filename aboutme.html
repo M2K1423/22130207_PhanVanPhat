@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ABOUT ME</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: 'Times New Roman', Times, serif;
+                cursor: pointer;
+            }
+            #main{
+                /* Kich thuoc cua so  */
+                width: 100%;
+                height: 100vh;               
+            }
+            #header{
+                width: 100%;
+                padding: 0px 30px;
+                margin-top: 33px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            #list{
+                list-style: none;
+                display: flex;
+            }
+            #list .item{
+                margin: 0px 25px;             
+            }
+            #list .item a{
+                color:#626A67;
+                font-size: 25px;  
+                text-decoration: none;             
+            }
+            .action button{
+                background-color: black;
+                border: none;
+                outline: none;
+                font-weight: bold;
+                border-radius: 20px;
+                transition: 0.4s;
+                color: white;
+                font-size: 25px;
+                width: 150px;
+                height: 70;
+            }
+            .action button:hover{
+                background: orange;
+            }
+            #center{
+                width: 100%;
+                background-color: bisque;
+                /* height: 100vh; */
+                margin-top: 25px;
+                padding: 0px 133px;
+                position: relative;
+                /* background-repeat: no-repeat; */
+                /* background-size: 100%; */
+            }
+            #center .center-top h2{
+                text-align: center;
+                font-size: 30px;
+                font-family: 'Times New Roman', Times, serif;
+                color: #626A67;
+                padding-top: 20px;
+            }
+            .center-mid{
+                display: flex;
+                justify-content: space-evenly;
+                margin-top: 30px;
+                /* border-bottom: black solid 0.1rem; */
+                margin-bottom: 30px;
+            }
+            #center .center-left{
+                background-color: rgba(255, 255, 255, 0.562);
+                border-radius: 7px;
+                border: rgb(95, 91, 91) solid 0.1rem;
+                height: 305px;
+            }
+            #center .center-left p{
+                font-size: 20px;
+                margin-top: 20px;
+                color: black;
+                font-family: 'Times New Roman', Times, serif;
+                font-weight: bold;
+                padding-left: 5px;
+            }
+            #center .center-right img{
+                width: 300px;
+                height: 310px;
+                border-radius: 7px;
+            }
+            .center-next{
+                display: flex;
+                justify-content: space-evenly;
+                margin-top: 30px;
+                /* border-bottom:black solid 0.1rem ; */
+                margin-bottom: 30px;
+            }
+            #center .center-left-side .center-left-next{
+                background-color: rgba(255, 255, 255, 0.562);
+                border-radius: 7px;
+                border: rgb(95, 91, 91) solid 0.1rem;
+                width: 300px;
+                height: auto;
+                margin: 10px;
+            }
+            #center .center-left-side .center-left-next .title{
+                font-size: 25px;
+                font-weight: bold;
+                color: black;
+                font-family: 'Times New Roman', Times, serif;
+                padding-left: 5px;
+            }
+            #center .center-left-side .center-left-next .content ul li{
+                margin-left: 5px;
+            }
+            #center .center-left-side .center-left-next .content ul li p{
+               font-weight: bold;
+               padding-left: 5px;            
+            }
+            #center .center-left-side .center-left-next .content .percent{
+                position: relative;
+                width: 100%;
+                height: 15px;
+                background: rgba(107, 100, 100, 0.411);
+                display: block;
+                margin-top: 5px;
+                border-radius: 20px;
+                margin-bottom: 10px;
+                
+            }
+            #center .center-left-side .center-left-next .content .percent div{
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                background:rgba(223, 202, 20, 0.918) ;
+            }
+            #center .center-right-side .center-right-next{
+                background-color: rgba(255, 255, 255, 0.562);
+                border-radius: 7px;
+                border: rgb(95, 91, 91) solid 0.1rem;
+                width: 300px;
+                height: auto;
+                margin: 10px;
+            }
+            #center .center-right-side .center-right-next .title{
+                font-size: 25px;
+                font-weight: bold;
+                color: black;
+                font-family: 'Times New Roman', Times, serif;
+                padding-left: 5px;
+            }
+            #center .center-right-side .center-right-next .content p{
+                font-weight: bold;
+                padding-left: 5px;
+                padding-top: 10px;
+            }
+            #footer .footer-top .title{
+                text-align: center;
+                font-size: 30px;
+                font-family: 'Times New Roman', Times, serif;
+                color: #626A67;
+                padding-top: 20px;
+                font-weight: bold;
+            }
+            #footer .footer-center{
+               display: flex;
+               justify-content: space-evenly;
+               margin-top: 30px;
+            }
+            #footer .footer-left{
+                background-color: rgba(255, 255, 255, 0.562);
+                border-radius: 7px;
+                border: rgb(95, 91, 91) solid 0.1rem;
+                width: 300px;
+                height: auto;
+                margin: 10px;
+                padding-bottom: 10px;
+            }
+            #footer .footer-left .title{
+                text-align: center;
+                font-size: 25px;
+                font-family: 'Times New Roman', Times, serif;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+            #footer .footer-left .item img {
+                width: 310px;
+                height: 280px;
+                text-align: center;
+            }
+            #footer .footer-left .item p{
+                font-weight:bold;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            #footer .footer-left .item button{
+                background-color: black;
+                border: none;
+                outline: none;
+                font-weight: bold;
+                border-radius: 20px;
+                transition: 0.4s;
+                color: white;
+                font-size:15px;
+                width: 100px;
+                height: 70;
+                margin: 15px;
+            }
+            #footer .footer-left .item button:hover{
+                background-color: orange;
+            }
+            #footer .footer-mid {
+                background-color: rgba(255, 255, 255, 0.562);
+                border-radius: 7px;
+                border: rgb(95, 91, 91) solid 0.1rem;
+                width: 300px;
+                height: auto;
+                margin: 10px;
+                padding-bottom: 10px;
+            }
+            #footer .footer-mid .title{
+                text-align: center;
+                font-size: 25px;
+                font-family: 'Times New Roman', Times, serif;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+            #footer .footer-mid .icon img{
+                width: 250px;
+                height: 230px;
+                text-align: center;
+                margin-bottom: 45px;
+            }
+            #footer .footer-mid .icon p{
+                font-weight: bold;
+                font-family: 'Times New Roman', Times, serif;
+            }
+            #footer .footer-mid .icon button{
+                background-color: black;
+                border: none;
+                outline: none;
+                font-weight: bold;
+                border-radius: 20px;
+                transition: 0.4s;
+                color: white;
+                font-size:15px;
+                width: 100px;
+                height: 70;
+                margin: 15px;
+            }
+            #footer .footer-mid .icon button:hover{
+                background-color: orange;
+            }
+            #footer .footer-right{
+                background-color: rgba(255, 255, 255, 0.562);
+                border-radius: 7px;
+                border: rgb(95, 91, 91) solid 0.1rem;
+                width: 300px;
+                height: auto;
+                margin: 10px;
+            }
+            #footer .footer-right .title{
+                text-align: center;
+                font-size: 25px;
+                font-family: 'Times New Roman', Times, serif;
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+            #footer .footer-right .item{
+                padding-left: 5px;
+                font-weight: bold;
+            }
+             #footer .footer-right .item button{
+                background-color: black;
+                border: none;
+                outline: none;
+                font-weight: bold;
+                border-radius: 20px;
+                transition: 0.4s;
+                color: white;
+                font-size:15px;
+                width: 100px;
+                height: 70;
+                margin: 15px;
+             }
+             #footer .footer-right .item button:hover{
+                background-color: orange;
+             }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <div id="header">
+                <a href="" class="logo">
+                    <img src="https://th.bing.com/th/id/R.cda888975eb3a93283ba1608c5ea29d3?rik=B3P38l1Yw8O7uQ&pid=ImgRaw&r=0"  
+                    style="width: 50px; height: 50px;" alt="Profile Image">
+               
+                </a>
+                <div id="list">
+                    <div class="item">
+                      <a href="">Home</a>
+                    </div>
+                    <div class="item">
+                     <a style="border-bottom: black solid 0.2em">About</a>
+                    </div>
+                    <div class="item">
+                        <a href="">SKill</a>
+                    </div>
+                    <div class="item">
+                        <a href="">Education</a>
+                    </div>
+                    <div class="item">
+                      <a href="">Work</a>
+                    </div>
+                </div>
+                <div class="action">
+                    <button>LOGIN IN</button>
+                </div>
+            </div>
+            <div id="center">
+                <div class="center-top">
+                    <h2>
+                        <span style="font-size: 40px; border-bottom: black solid 0.1rem;">About Me</span>
+                        <br>
+                        <span>My information</span>
+                    </h2>
+                </div>
+                <div class="center-mid">
+                    <div class="center-left">
+                        <p>Name: Phan Van Phat</p>
+                        <p>ID Student: 22130207</p>
+                        <p>Date of birth: 15-02-2004</p>
+                        <p>Tel: 0343035119</p>
+                        <p>Mail: 22130207@st.hcmuaf.edu.vn</p>
+                    </div>
+                    <div class="center-right">
+                        <img src="https://scontent.fsgn2-9.fna.fbcdn.net/v/t39.30808-1/454007935_1295147424802612_2083475078642055725_n.jpg?stp=c0.253.960.960a_dst-jpg_s200x200&_nc_cat=103&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeGHftwR9CqhAFta7wsgez3_0aBgefhg5CbRoGB5-GDkJsZ8mMTX7k7WKq8FmBkQ7k79GV__RSOLlsvSeqqac4Lu&_nc_ohc=GudD2qN_vTkQ7kNvgEqfO7J&_nc_ht=scontent.fsgn2-9.fna&_nc_gid=AJrFHhCLPi7XBd4h-HAs4gX&oh=00_AYAemXzKO6rrO7hBGOcmt2CSf_fJdYHWEjTgqrwDH9W4-Q&oe=6720FA35"  
+      alt="Profile Image">
+
+                    </div>
+                </div>
+                <div class="center-top">
+                    <h2>
+                        <span>My skills and education</span>
+                    </h2>
+                </div>
+                <div class="center-next">
+                    <div class="center-left-side">
+                        <div class="center-left-next">
+                         <div class="title">
+                           SKill
+                          </div>
+                         <div class="content">
+                            <ul>
+                               <li><p>Photoshop</p>
+                                  <span class="percent">
+                                  <div style="width: 70%;"></div>
+                                  </span>
+                                </li>
+                                <li><p>HTML & CSS</p>
+                                  <span class="percent">
+                                   <div style="width: 60%;"></div>
+                                  </span>
+                                </li>
+                            </ul>
+                         </div>                       
+                        </div>
+                        <div class="center-left-next">
+                         <div class="title">
+                           SKill Developer
+                          </div>
+                         <div class="content">
+                            <ul>
+                               <li><p>Java</p>
+                                  <span class="percent">
+                                  <div style="width: 80%;"></div>
+                                  </span>
+                                </li>
+                                <li><p>C++</p>
+                                  <span class="percent">
+                                   <div style="width: 70%;"></div>
+                                  </span>
+                                </li>
+                            </ul>
+                         </div>
+                        </div>   
+                    </div>
+                    <div class="center-right-side">
+                        <div class="center-right-next">
+                            <div class="title">
+                                Education
+                            </div>
+                            <div class="content">
+                                <p>Truong tieu hoc Duc Loi</p>
+                                <p>Truong trung hoc co so Duc Loi</p>
+                                <p>Truong trung hoc pho thong Mo Duc 2</p>
+                                <p>Hien la sinh vien nam 2 cua Dai hoc Nong Lam</p>
+                            </div>                            
+                        </div>                                        
+                        <div class="center-right-next">
+                            <div class="title">
+                                Work
+                            </div>
+                            <div class="content">
+                               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.<br>
+                                 Obcaecati itaque molestiae, modi autem, numquam saepe voluptatem harum quidem,<br>
+                                  at vel ullam quae ducimus vitae earum quibusdam mollitia minus reiciendis debitis.</p>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="footer">
+                <div class="footer-top">
+                    <div class="title">
+                        Service
+                    </div>
+                </div>
+                <div class="footer-center">
+                    <div class="footer-left">
+                        <div class="title">
+                        IDENITY & LOGO
+                        </div>
+                        <div class="item">
+                        <span>
+                            <img src="img/BongDen.png" alt="">
+                        </span>
+                        <span>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.<br>
+                                 Voluptas sapiente commodi corporis architecto rerum. Quas,<br>
+                                  natus? Labore dignissimos quos voluptate, ratione, ipsa dicta,<br>
+                                   placeat cupiditate alias delectus ab cumque autem?</p>
+                        </span>
+                        <span>
+                            <button>READ MORE</button>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="footer-mid">
+                        <div class="title">
+                        WEB/APP DESIGN
+                        </div>
+                        <div class="icon">
+                            <span>
+                                <img src="img/WEB.png" alt="">
+                            </span>
+                            <span>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br>
+                                    Vel provident voluptates, ipsam ea est numquam maxime nostrum. <br>
+                                    Placeat, quam consequatur omnis sapiente, voluptatibus nisi alias commodi<br>
+                                     ipsam cupiditate repudiandae ipsum.</p>
+                            </span>
+                            <span>
+                                <button>READ MORE</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="footer-right">
+                        <div class="title">
+                            DEVELOPER
+                        </div>
+                        <div class="item">
+                            <span>
+                                <img src="img/DEVELOPER.png" alt="">
+                            </span>
+                            <span>
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br>
+                                    Vel provident voluptates, ipsam ea est numquam maxime nostrum. <br>
+                                    Placeat, quam consequatur omnis sapiente, voluptatibus nisi alias commodi<br>
+                                     ipsam cupiditate repudiandae ipsum.</p>
+                            </span>
+                            <span>
+                                <button>READ MORE</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+          
