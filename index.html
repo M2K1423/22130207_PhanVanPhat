@@ -3,62 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang chủ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #4CAF50;
-            padding: 10px;
-            text-align: center;
-            color: white;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #333;
-        }
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-        }
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        section {
-            padding: 20px;
-            text-align: center;
-        }
-    </style>
+    <title>Chia sẻ tài liệu học tập</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
+<header>
+    <h1>Chia sẻ tài liệu học tập</h1>
+    <div class="header-buttons">
+        <button id="login-button">Login</button>
+        <button id="download-button">Download Free 30 Days</button>
+    </div>
+</header>
+<main>
+    <div class="search-container">
+        <input type="text" id="search" placeholder="Tìm kiếm tài liệu...">
+        <button id="search-button">Tìm kiếm</button>
+        <input type="file" id="file-input" style="display: none;" multiple>
+        <button id="upload-button">Tải lên tài liệu</button>
+        <select id="language-dropdown">
+            <option value="vi">Tiếng Việt</option>
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+        </select>
+        <div class="user-icon">
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </div>
 
-    <header>
-        <h1>Trang chủ</h1>
-    </header>
+    <div class="accordion">
+        <h2 class="accordion-header">Toán học</h2>
+        <div class="accordion-content">
+            <h3>Bài giảng</h3>
+            <ul>
+                <li><a href="#">Bài giảng 1: Giới thiệu về đại số</a></li>
+                <li><a href="#">Bài giảng 2: Giải tích cơ bản</a></li>
+            </ul>
+            <h3>Bài tập</h3>
+            <ul>
+                <li><a href="#">Bài tập 1: Bài tập đại số</a></li>
+                <li><a href="#">Bài tập 2: Bài tập giải tích</a></li>
+            </ul>
+            <h3>Tài liệu tham khảo</h3>
+            <ul>
+                <li><a href="#">Sách: Đại số và Giải tích</a></li>
+                <li><a href="#">Bài viết: Ứng dụng của Toán học</a></li>
+            </ul>
+        </div>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="lap1.html">Lap1</a> <!-- Thay đổi liên kết -->
-        <a href="about.html">About</a>
-        
-    </nav>
+        <h2 class="accordion-header">Vật lý</h2>
+        <div class="accordion-content">
+            <h3>Bài giảng</h3>
+            <ul>
+                <li><a href="#">Bài giảng 1: Cơ học</a></li>
+                <li><a href="#">Bài giảng 2: Điện từ học</a></li>
+            </ul>
+            <h3>Bài tập</h3>
+            <ul>
+                <li><a href="#">Bài tập 1: Bài tập cơ học</a></li>
+                <li><a href="#">Bài tập 2: Bài tập điện từ</a></li>
+            </ul>
+            <h3>Tài liệu tham khảo</h3>
+            <ul>
+                <li><a href="#">Sách: Vật lý đại cương</a></li>
+                <li><a href="#">Bài viết: Ứng dụng của Vật lý</a></li>
+            </ul>
+        </div>
 
-    <section id="home">
-        <h2>Chào mừng đến với trang Home</h2>
-        <p>Đây là trang chủ.</p>
-    </section>
+        <h2 class="accordion-header">Hóa học</h2>
+        <div class="accordion-content">
+            <h3>Bài giảng</h3>
+            <ul>
+                <li><a href="#">Bài giảng 1: Hóa học hữu cơ</a></li>
+                <li><a href="#">Bài giảng 2: Hóa học vô cơ</a></li>
+            </ul>
+            <h3>Bài tập</h3>
+            <ul>
+                <li><a href="#">Bài tập 1: Phản ứng hóa học</a></li>
+                <li><a href="#">Bài tập 2: Bài tập Hóa học hữu cơ</a></li>
+            </ul>
+            <h3>Tài liệu tham khảo</h3>
+            <ul>
+                <li><a href="#">Sách: Hóa học cơ sở</a></li>
+                <li><a href="#">Bài viết: Hóa học trong đời sống</a></li>
+            </ul>
+        </div>
 
-    <section id="about">
-        <h2>About</h2>
-        <p>Thông tin về chúng tôi.</p>
-    </section>
+        <h2 class="accordion-header">Sinh học</h2>
+        <div class="accordion-content">
+            <h3>Bài giảng</h3>
+            <ul>
+                <li><a href="#">Bài giảng 1: Di truyền học</a></li>
+                <li><a href="#">Bài giảng 2: Sinh lý học</a></li>
+            </ul>
+            <h3>Bài tập</h3>
+            <ul>
+                <li><a href="#">Bài tập 1: Di truyền Mendel</a></li>
+                <li><a href="#">Bài tập 2: Sinh lý học tế bào</a></li>
+            </ul>
+            <h3>Tài liệu tham khảo</h3>
+            <ul>
+                <li><a href="#">Sách: Sinh học đại cương</a></li>
+                <li><a href="#">Bài viết: Ứng dụng của Sinh học</a></li>
+            </ul>
+        </div>
+    </div>
 
+    <div class="translate-container">
+        <h2>Google Dịch</h2>
+        <iframe src="https://translate.google.com" width="100%" height="300px" style="border: none;"></iframe>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2024 Chia sẻ tài liệu học tập. Tất cả quyền được bảo lưu.</p>
+</footer>
 </body>
 </html>
+
